@@ -4,151 +4,255 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Another Blessing 🎂</title>
+  <title>Happy Birthday, My Love 🤍</title>
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
       font-family: "Arial", sans-serif;
-      background: linear-gradient(135deg, #ffe6ef, #fff7f0, #f9e8ff);
+      background:
+        radial-gradient(circle at top left, #ffe1eb 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #eadcff 0%, transparent 35%),
+        linear-gradient(135deg, #fff8fa, #fdf4f8, #f8f3ff);
+      color: #555;
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
-      color: #555;
+      padding: 30px 15px;
     }
 
-    .container {
-      width: 92%;
-      max-width: 430px;
-      background: rgba(255,255,255,0.85);
-      border-radius: 30px;
+    .card {
+      width: 100%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 32px;
       padding: 30px 22px;
       text-align: center;
-      box-shadow: 0 15px 40px rgba(180, 120, 150, 0.2);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 1.5s ease;
+      box-shadow:
+        0 20px 60px rgba(170, 110, 140, 0.18);
+      animation: cardAppear 1.2s ease;
+      position: relative;
+      z-index: 2;
     }
 
-    .small-title {
-      font-size: 14px;
-      letter-spacing: 3px;
-      color: #c88aa3;
+    .top-text {
+      font-size: 12px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      color: #c68ba3;
+      margin-bottom: 10px;
     }
 
     h1 {
-      margin: 0;
-      font-family: Georgia, serif;
-      font-size: 38px;
-      color: #b96b89;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 37px;
+      color: #b96d89;
+      line-height: 1.2;
+      margin-bottom: 8px;
     }
 
     .subtitle {
-      margin-top: 8px;
-      font-size: 15px;
-      color: #888;
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 25px;
     }
 
-    .photo-frame {
-      width: 190px;
-      height: 190px;
-      margin: 25px auto;
+    /* FOTO */
+    .photo-wrapper {
+      width: 215px;
+      height: 215px;
+      margin: 0 auto 25px;
+      padding: 7px;
       border-radius: 50%;
-      padding: 6px;
-      background: linear-gradient(135deg, #e7a8bd, #f5d4df);
-      box-shadow: 0 10px 30px rgba(190, 120, 150, 0.25);
+      background: linear-gradient(
+        135deg,
+        #d995ae,
+        #f4c7d7,
+        #e6d2ef
+      );
+      box-shadow:
+        0 12px 35px rgba(180, 110, 140, 0.25);
+      animation: photoFloat 4s ease-in-out infinite;
     }
 
-    .photo-frame img {
+    .photo-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid white;
+      border: 5px solid white;
+      display: block;
     }
 
+    /* PEMBUKA */
+    .opening {
+      font-family: Georgia, serif;
+      color: #a86c83;
+      font-size: 17px;
+      margin-bottom: 18px;
+    }
+
+    /* UCAPAN */
     .message {
-      background: #fff;
-      border-radius: 22px;
-      padding: 20px;
-      margin-top: 20px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 24px;
+      padding: 23px 20px;
+      text-align: left;
       line-height: 1.8;
-      font-size: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      font-size: 14.5px;
+      color: #666;
+      box-shadow: 0 8px 25px rgba(180, 120, 150, 0.08);
+    }
+
+    .message p {
+      margin-bottom: 18px;
+    }
+
+    .message p:last-child {
+      margin-bottom: 0;
+      text-align: center;
     }
 
     .message strong {
-      color: #b96b89;
+      color: #b76888;
+      font-family: Georgia, serif;
+      font-size: 17px;
     }
 
-    .quote {
-      margin-top: 22px;
+    .message em {
+      color: #ad7088;
+    }
+
+    /* QUOTE */
+    .quote-box {
+      margin: 23px 3px 0;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        rgba(255,232,239,0.8),
+        rgba(246,235,255,0.8)
+      );
+      color: #a56f83;
       font-family: Georgia, serif;
       font-style: italic;
-      color: #a87587;
-      font-size: 16px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .quote-box .heart-line {
+      font-style: normal;
+      font-size: 18px;
+      margin-top: 7px;
+    }
+
+    /* MUSIK */
+    .music-area {
+      margin-top: 25px;
     }
 
     .music-button {
-      margin-top: 22px;
       border: none;
-      padding: 12px 22px;
-      border-radius: 30px;
-      background: #c9829e;
+      outline: none;
+      cursor: pointer;
+      padding: 13px 25px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #c77f9b, #b96d89);
       color: white;
       font-size: 14px;
-      cursor: pointer;
-      box-shadow: 0 6px 15px rgba(190, 110, 140, 0.25);
+      box-shadow: 0 8px 20px rgba(185, 109, 137, 0.25);
+      transition: 0.3s ease;
     }
 
     .music-button:hover {
-      transform: scale(1.05);
+      transform: translateY(-2px) scale(1.03);
     }
 
-    .footer {
-      margin-top: 22px;
-      font-size: 12px;
+    .music-note {
+      margin-top: 9px;
+      font-size: 11px;
       color: #aaa;
     }
 
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 18px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.7;
-      pointer-events: none;
+    .footer {
+      margin-top: 25px;
+      font-size: 11px;
+      color: #b6a6ad;
+      letter-spacing: 0.5px;
     }
 
-    @keyframes fadeIn {
+    /* HATI MELAYANG */
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      animation: floatHeart linear forwards;
+    }
+
+    @keyframes cardAppear {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(35px) scale(0.96);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
 
-    @keyframes floatUp {
-      from {
+    @keyframes photoFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes floatHeart {
+      0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
       }
-      20% {
-        opacity: 0.8;
+
+      15% {
+        opacity: 0.7;
       }
+
       100% {
         transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      h1 {
+        font-size: 31px;
+      }
+
+      .photo-wrapper {
+        width: 185px;
+        height: 185px;
+      }
+
+      .message {
+        font-size: 14px;
       }
     }
   </style>
@@ -156,101 +260,210 @@
 
 <body>
 
-  <div class="container">
+  <div class="page">
 
-    <div class="small-title">
-      A little celebration
-    </div>
+    <div class="card">
 
-    <h1>Another Blessing ✨</h1>
+      <div class="top-text">
+        A Little Birthday Wish
+      </div>
 
-    <div class="subtitle">
-      Another year, another beautiful chapter.
-    </div>
+      <h1>
+        Happy Birthday,<br>
+        My Love 🤍
+      </h1>
 
-    <!-- FOTO -->
-    <div class="photo-frame">
-      <img src="foto.jpg" alt="Birthday Photo">
-    </div>
+      <div class="subtitle">
+        Another year, another blessing ✨
+      </div>
 
-    <!-- UCAPAN -->
-    <div class="message">
-      <p>
-        <strong>Happy Birthday to me! 🎂🤍</strong>
-      </p>
 
-      <p>
-        Another year of life, another blessing to be grateful for.
-        Terima kasih untuk diri sendiri yang sudah bertahan,
-        belajar, tumbuh, dan terus berjalan sampai sejauh ini.
-      </p>
+      <!-- FOTO -->
+      <div class="photo-wrapper">
+        <img
+          src="foto.jpg"
+          alt="Our special memory"
+        >
+      </div>
 
-      <p>
-        Semoga di usia yang baru ini, semakin banyak hal baik yang datang.
-        Semoga hati selalu tenang, langkah selalu dimudahkan,
-        rezeki dilancarkan, dan setiap doa menemukan jalannya.
-      </p>
 
-      <p>
-        Here's to more beautiful memories,
-        more reasons to smile,
-        and a life that feels more and more like a blessing. ✨
-      </p>
-    </div>
+      <div class="opening">
+        For the person who means so much to me... 🤍
+      </div>
 
-    <div class="quote">
-      "May this new chapter be softer, brighter,
-      and full of beautiful surprises." 🌷
-    </div>
 
-    <!-- MUSIK -->
-    <audio id="birthdayMusic" loop>
-      <source src="lagu.mp3" type="audio/mpeg">
-    </audio>
+      <!-- UCAPAN -->
+      <div class="message">
 
-    <button class="music-button" onclick="toggleMusic()">
-      🎵 Play Music
-    </button>
+        <p>
+          <strong>Happy Birthday, my love 🤍</strong>
+        </p>
 
-    <div class="footer">
-      Made with love for another beautiful year 🤍
+        <p>
+          Another year, another blessing.
+          Semoga di usia yang baru ini, kamu selalu diberikan
+          kesehatan, kebahagiaan, dan dimudahkan dalam setiap langkah.
+        </p>
+
+        <p>
+          Terima kasih sudah hadir di dunia ini dan akhirnya kita
+          dipertemukan oleh Allah SWT.
+          Terima kasih sudah menjadi seseorang yang begitu berarti.
+          Aku sayang sama kamu, dan aku akan selalu ada di samping kamu,
+          walaupun aku banyak ngambeknya sama kamu 🫶🏻
+        </p>
+
+        <p>
+          Semoga kita diizinkan untuk selalu bersama-sama melewati
+          semua perjalanan hidup yang indah ini.
+          Saling menggenggam tangan, berdampingan, dan terus berjalan
+          bersama ya, sayang. 👩‍❤️‍👨
+        </p>
+
+        <p>
+          Seperti lagu yang menggambarkan harapanku untuk kita:
+          <em>
+            “Sampai kita tua, sampai jadi debu,
+            ku di liang yang satu, ku di sebelahmu.”
+          </em>
+          🤍
+        </p>
+
+        <p>
+          I hope this new chapter brings you more happiness,
+          more beautiful memories, and everything your heart
+          has been wishing for. ✨
+        </p>
+
+        <p>
+          <strong>
+            Happy birthday, my Love 🤍
+          </strong>
+        </p>
+
+      </div>
+
+
+      <!-- QUOTE -->
+      <div class="quote-box">
+        For all the days ahead,
+        I hope it's always you and me.
+
+        <br>
+
+        <span>
+          Growing together, laughing together,
+          and growing old together. 🤍
+        </span>
+
+        <div class="heart-line">
+          ♡ ✦ ♡
+        </div>
+      </div>
+
+
+      <!-- MUSIK -->
+      <div class="music-area">
+
+        <audio id="birthdayMusic" loop>
+          <source src="lagu.mp3" type="audio/mpeg">
+        </audio>
+
+        <button
+          class="music-button"
+          id="musicButton"
+          onclick="toggleMusic()"
+        >
+          🎵 Play Our Song
+        </button>
+
+        <div class="music-note">
+          Tap the button and let the memories play 🎶
+        </div>
+
+      </div>
+
+
+      <div class="footer">
+        Made with love, just for you 🤍
+      </div>
+
     </div>
 
   </div>
 
+
   <script>
+
+    /* =========================
+       MUSIC
+    ========================= */
+
     const music = document.getElementById("birthdayMusic");
-    const button = document.querySelector(".music-button");
+    const musicButton = document.getElementById("musicButton");
 
     function toggleMusic() {
+
       if (music.paused) {
+
         music.play();
-        button.innerHTML = "⏸ Pause Music";
+
+        musicButton.innerHTML =
+          "⏸ Pause Our Song";
+
       } else {
+
         music.pause();
-        button.innerHTML = "🎵 Play Music";
+
+        musicButton.innerHTML =
+          "🎵 Play Our Song";
       }
     }
 
+
+    /* =========================
+       FLOATING HEARTS
+    ========================= */
+
     function createHeart() {
+
       const heart = document.createElement("div");
 
-      heart.className = "heart";
-      heart.innerHTML = Math.random() > 0.5 ? "♡" : "✦";
+      heart.className = "floating-heart";
 
-      heart.style.left = Math.random() * 100 + "vw";
+      const symbols = [
+        "♡",
+        "♥",
+        "🤍",
+        "✦",
+        "♡"
+      ];
+
+      heart.innerHTML =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+      heart.style.left =
+        Math.random() * 100 + "vw";
+
+      heart.style.fontSize =
+        (12 + Math.random() * 14) + "px";
+
+      const duration =
+        5 + Math.random() * 5;
+
       heart.style.animationDuration =
-        (4 + Math.random() * 4) + "s";
+        duration + "s";
 
       document.body.appendChild(heart);
 
       setTimeout(() => {
         heart.remove();
-      }, 8000);
+      }, duration * 1000);
     }
 
-    setInterval(createHeart, 700);
+    setInterval(createHeart, 900);
+
   </script>
 
 </body>
-</html>
+          </html>
