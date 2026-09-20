@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Wish 🎂</title>
+
+  <title>Another Blessing 🎂</title>
 
   <style>
     * {
@@ -13,126 +14,242 @@
     body {
       margin: 0;
       min-height: 100vh;
+      font-family: "Arial", sans-serif;
+      background: linear-gradient(135deg, #ffe6ef, #fff7f0, #f9e8ff);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ffd6e7, #fff1f7);
-      color: #444;
-      padding: 20px;
+      overflow-x: hidden;
+      color: #555;
     }
 
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: white;
-      padding: 35px 25px;
-      border-radius: 25px;
+    .container {
+      width: 92%;
+      max-width: 430px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 30px;
+      padding: 30px 22px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 15px 40px rgba(180, 120, 150, 0.2);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.5s ease;
+    }
+
+    .small-title {
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: #c88aa3;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
     h1 {
-      color: #e75480;
-      margin-bottom: 10px;
+      margin: 0;
+      font-family: Georgia, serif;
+      font-size: 38px;
+      color: #b96b89;
     }
 
-    p {
-      line-height: 1.6;
+    .subtitle {
+      margin-top: 8px;
+      font-size: 15px;
+      color: #888;
     }
 
-    input {
+    .photo-frame {
+      width: 190px;
+      height: 190px;
+      margin: 25px auto;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, #e7a8bd, #f5d4df);
+      box-shadow: 0 10px 30px rgba(190, 120, 150, 0.25);
+    }
+
+    .photo-frame img {
       width: 100%;
-      padding: 14px;
-      margin: 15px 0;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      font-size: 16px;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
     }
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 12px;
-      background: #e75480;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #d94370;
-    }
-
-    #result {
-      display: none;
-      margin-top: 25px;
+    .message {
+      background: #fff;
+      border-radius: 22px;
       padding: 20px;
-      background: #fff0f5;
-      border-radius: 15px;
+      margin-top: 20px;
+      line-height: 1.8;
+      font-size: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .message strong {
+      color: #b96b89;
+    }
+
+    .quote {
+      margin-top: 22px;
+      font-family: Georgia, serif;
+      font-style: italic;
+      color: #a87587;
+      font-size: 16px;
+    }
+
+    .music-button {
+      margin-top: 22px;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 30px;
+      background: #c9829e;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(190, 110, 140, 0.25);
+    }
+
+    .music-button:hover {
+      transform: scale(1.05);
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 12px;
+      color: #aaa;
     }
 
     .heart {
-      font-size: 40px;
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="card">
+  <div class="container">
 
-    <div class="heart">💗</div>
+    <div class="small-title">
+      A little celebration
+    </div>
 
-    <h1>Birthday Wish 🎂</h1>
+    <h1>Another Blessing ✨</h1>
 
-    <p>Masukkan nama untuk membuka ucapan spesial ✨</p>
+    <div class="subtitle">
+      Another year, another beautiful chapter.
+    </div>
 
-    <input
-      type="text"
-      id="name"
-      placeholder="Nama kamu..."
-    >
+    <!-- FOTO -->
+    <div class="photo-frame">
+      <img src="foto.jpg" alt="Birthday Photo">
+    </div>
 
-    <button onclick="createWish()">
-      Create Birthday Wish 💌
+    <!-- UCAPAN -->
+    <div class="message">
+      <p>
+        <strong>Happy Birthday to me! 🎂🤍</strong>
+      </p>
+
+      <p>
+        Another year of life, another blessing to be grateful for.
+        Terima kasih untuk diri sendiri yang sudah bertahan,
+        belajar, tumbuh, dan terus berjalan sampai sejauh ini.
+      </p>
+
+      <p>
+        Semoga di usia yang baru ini, semakin banyak hal baik yang datang.
+        Semoga hati selalu tenang, langkah selalu dimudahkan,
+        rezeki dilancarkan, dan setiap doa menemukan jalannya.
+      </p>
+
+      <p>
+        Here's to more beautiful memories,
+        more reasons to smile,
+        and a life that feels more and more like a blessing. ✨
+      </p>
+    </div>
+
+    <div class="quote">
+      "May this new chapter be softer, brighter,
+      and full of beautiful surprises." 🌷
+    </div>
+
+    <!-- MUSIK -->
+    <audio id="birthdayMusic" loop>
+      <source src="lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-button" onclick="toggleMusic()">
+      🎵 Play Music
     </button>
 
-    <div id="result"></div>
+    <div class="footer">
+      Made with love for another beautiful year 🤍
+    </div>
 
   </div>
 
   <script>
-    function createWish() {
-      const name = document.getElementById("name").value.trim();
-      const result = document.getElementById("result");
+    const music = document.getElementById("birthdayMusic");
+    const button = document.querySelector(".music-button");
 
-      if (name === "") {
-        alert("Masukkan nama terlebih dahulu ya 💗");
-        return;
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        button.innerHTML = "⏸ Pause Music";
+      } else {
+        music.pause();
+        button.innerHTML = "🎵 Play Music";
       }
-
-      result.style.display = "block";
-
-      result.innerHTML = `
-        <h2>Happy Birthday, ${name}! 🎂</h2>
-        <p>
-          Another blessing, another year to grow,
-          another chance to shine. ✨
-        </p>
-
-        <p>
-          Semoga tahun ini membawa lebih banyak
-          kebahagiaan, kesehatan, rezeki, dan
-          hal-hal baik yang kamu harapkan. 🤍
-        </p>
-
-        <p>
-          Keep growing, keep shining, and keep being you. 🌷
-        </p>
-      `;
     }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+
+      heart.className = "heart";
+      heart.innerHTML = Math.random() > 0.5 ? "♡" : "✦";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 700);
   </script>
 
 </body>
