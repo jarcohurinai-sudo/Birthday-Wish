@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>For My Love 🤍</title>
 
   <style>
@@ -14,31 +15,44 @@
 
     body {
       min-height: 100vh;
-      font-family: "Georgia", serif;
-      background:
-        radial-gradient(circle at top, #ffeaf2 0%, transparent 40%),
-        linear-gradient(135deg, #fff5f7, #fce4ec, #f8dce8);
+      font-family: Georgia, serif;
       color: #5c3a46;
+
+      background:
+        radial-gradient(circle at top, #ffeaf2 0%, transparent 45%),
+        linear-gradient(135deg, #fff5f7, #fce4ec, #f8dce8);
+
       overflow-x: hidden;
     }
 
+    /* =========================
+       CONTAINER
+    ========================= */
+
     .container {
       min-height: 100vh;
+
       display: flex;
       justify-content: center;
       align-items: center;
+
       padding: 25px 15px;
+
       position: relative;
     }
+
 
     /* =========================
        OPENING
     ========================= */
 
     .opening {
+      width: 100%;
+      max-width: 420px;
+
       text-align: center;
+
       transition: all 1s ease;
-      z-index: 5;
     }
 
     .opening.hide {
@@ -49,42 +63,72 @@
     }
 
     .small-text {
-      font-size: 15px;
+      font-size: 14px;
       letter-spacing: 2px;
+
       margin-bottom: 18px;
+
       color: #9b687b;
     }
 
     .opening h1 {
-      font-size: 35px;
+      font-size: 32px;
+
       color: #7c455b;
+
       margin-bottom: 12px;
     }
 
     .opening p {
       font-size: 16px;
       line-height: 1.7;
+
       max-width: 330px;
+
       margin: auto;
+
       color: #765260;
     }
 
     .gift {
       font-size: 65px;
+
       margin: 25px 0;
+
       animation: floating 2.5s ease-in-out infinite;
     }
 
+
+    /* =========================
+       OPEN BUTTON
+    ========================= */
+
     .open-btn {
       border: none;
-      background: linear-gradient(135deg, #b76e8a, #8f4f6c);
+
+      background:
+        linear-gradient(
+          135deg,
+          #b76e8a,
+          #8f4f6c
+        );
+
       color: white;
+
       padding: 15px 32px;
+
       border-radius: 50px;
+
       font-size: 16px;
+
       font-family: inherit;
+
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(143, 79, 108, 0.3);
+
+      box-shadow:
+        0 8px 25px
+        rgba(143, 79, 108, 0.3);
+
       transition: 0.3s;
     }
 
@@ -92,31 +136,89 @@
       transform: translateY(-3px) scale(1.03);
     }
 
+
     /* =========================
-       MAIN CARD
+       MUSIC BUTTON
+    ========================= */
+
+    .music-top {
+      position: fixed;
+
+      top: 20px;
+      right: 20px;
+
+      z-index: 100;
+    }
+
+    .music-top button {
+      border: none;
+
+      background: rgba(255,255,255,0.8);
+
+      backdrop-filter: blur(10px);
+
+      color: #8f4f6c;
+
+      width: 45px;
+      height: 45px;
+
+      border-radius: 50%;
+
+      font-size: 18px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 20px
+        rgba(100,60,80,0.15);
+    }
+
+
+    /* =========================
+       CARD
     ========================= */
 
     .card {
       width: 100%;
       max-width: 650px;
+
       padding: 35px 25px;
+
       border-radius: 30px;
-      background: rgba(255, 255, 255, 0.72);
+
+      background:
+        rgba(255,255,255,0.76);
+
       backdrop-filter: blur(12px);
-      box-shadow: 0 20px 60px rgba(120, 60, 90, 0.18);
+
+      box-shadow:
+        0 20px 60px
+        rgba(120,60,90,0.18);
+
       text-align: center;
 
       opacity: 0;
-      transform: translateY(40px) scale(0.95);
+
+      transform:
+        translateY(40px)
+        scale(0.95);
+
       pointer-events: none;
-      transition: all 1.2s ease;
+
+      transition:
+        all 1.2s ease;
     }
 
     .card.show {
       opacity: 1;
-      transform: translateY(0) scale(1);
+
+      transform:
+        translateY(0)
+        scale(1);
+
       pointer-events: auto;
     }
+
 
     /* =========================
        PHOTO
@@ -125,184 +227,256 @@
     .photo-wrapper {
       width: 170px;
       height: 170px;
-      margin: 0 auto 25px;
+
+      margin:
+        0 auto 25px;
+
       border-radius: 50%;
+
       padding: 5px;
-      background: linear-gradient(135deg, #d69aaa, #f3c8d5, #b76e8a);
-      box-shadow: 0 10px 30px rgba(140, 70, 100, 0.25);
+
+      background:
+        linear-gradient(
+          135deg,
+          #d69aaa,
+          #f3c8d5,
+          #b76e8a
+        );
+
+      box-shadow:
+        0 10px 30px
+        rgba(140,70,100,0.25);
 
       opacity: 0;
+
       transform: scale(0.5);
     }
 
     .photo-wrapper.show {
-      animation: photoAppear 1.2s forwards;
+      animation:
+        photoAppear 1.2s forwards;
     }
 
     .photo-wrapper img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       border-radius: 50%;
+
       border: 4px solid white;
     }
 
+
     /* =========================
-       TEXT
+       TITLE
     ========================= */
 
-    .wish-title,
-    .subtitle,
-    .message,
-    .quote,
-    .music {
+    .wish-title {
+      font-size: 30px;
+
+      color: #7c455b;
+
+      margin-bottom: 10px;
+
       opacity: 0;
       transform: translateY(20px);
     }
 
     .wish-title.show {
-      animation: textAppear 1s forwards;
-    }
-
-    .wish-title {
-      font-size: 30px;
-      color: #7c455b;
-      margin-bottom: 10px;
-    }
-
-    .subtitle.show {
-      animation: textAppear 1s forwards;
-      animation-delay: 0.2s;
-      animation-fill-mode: both;
+      animation:
+        textAppear 1s forwards;
     }
 
     .subtitle {
       font-size: 18px;
+
       color: #a65d79;
+
       font-style: italic;
+
       margin-bottom: 25px;
+
+      opacity: 0;
+      transform: translateY(20px);
     }
+
+    .subtitle.show {
+      animation:
+        textAppear 1s forwards;
+    }
+
+
+    /* =========================
+       MESSAGE
+    ========================= */
 
     .message {
       text-align: left;
+
       font-size: 16px;
+
       line-height: 1.9;
+
       color: #644653;
+
+      opacity: 0;
+
+      transform: translateY(20px);
     }
 
     .message.show {
-      animation: textAppear 1s forwards;
+      animation:
+        textAppear 1s forwards;
     }
 
     .message p {
       margin-bottom: 18px;
     }
 
-    .message .center {
+    .center {
       text-align: center;
     }
 
-    .quote.show {
-      animation: textAppear 1s forwards;
-    }
+
+    /* =========================
+       QUOTE
+    ========================= */
 
     .quote {
       margin: 25px 0;
+
       padding: 20px;
-      border-left: 4px solid #b76e8a;
-      background: rgba(255, 235, 242, 0.75);
-      border-radius: 0 15px 15px 0;
+
+      border-left:
+        4px solid #b76e8a;
+
+      background:
+        rgba(255,235,242,0.75);
+
+      border-radius:
+        0 15px 15px 0;
+
       font-style: italic;
+
       line-height: 1.8;
+
       color: #75495a;
+
+      opacity: 0;
+
+      transform: translateY(20px);
     }
 
+    .quote.show {
+      animation:
+        textAppear 1s forwards;
+    }
+
+
     /* =========================
-       MUSIC
+       FINAL
     ========================= */
 
-    .music.show {
-      animation: textAppear 1s forwards;
+    .final-message {
+      opacity: 0;
+
+      transform: translateY(20px);
     }
 
-    .music {
-      margin-top: 25px;
+    .final-message.show {
+      animation:
+        textAppear 1s forwards;
     }
 
-    .music button {
-      border: none;
-      background: #8f4f6c;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-family: inherit;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(143, 79, 108, 0.25);
-    }
-
-    .music button:hover {
-      transform: scale(1.03);
-    }
 
     /* =========================
-       HEARTS
-    ========================= */
-
-    .heart {
-      position: fixed;
-      bottom: -30px;
-      font-size: 18px;
-      animation: heartFloat linear forwards;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* =========================
-       ANIMATIONS
+       ANIMATION
     ========================= */
 
     @keyframes floating {
-      0%, 100% {
-        transform: translateY(0);
+
+      0%,100% {
+        transform:
+          translateY(0);
       }
 
       50% {
-        transform: translateY(-12px);
+        transform:
+          translateY(-12px);
       }
     }
 
     @keyframes photoAppear {
+
       0% {
         opacity: 0;
-        transform: scale(0.5) rotate(-10deg);
+
+        transform:
+          scale(0.5)
+          rotate(-10deg);
       }
 
       70% {
-        transform: scale(1.08) rotate(3deg);
+        transform:
+          scale(1.08)
+          rotate(3deg);
       }
 
       100% {
         opacity: 1;
-        transform: scale(1) rotate(0);
+
+        transform:
+          scale(1)
+          rotate(0);
       }
     }
 
     @keyframes textAppear {
+
       from {
         opacity: 0;
-        transform: translateY(20px);
+
+        transform:
+          translateY(20px);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
       }
     }
 
+
+    /* =========================
+       HEART
+    ========================= */
+
+    .heart {
+      position: fixed;
+
+      bottom: -30px;
+
+      pointer-events: none;
+
+      z-index: 1;
+
+      animation:
+        heartFloat
+        linear
+        forwards;
+    }
+
     @keyframes heartFloat {
+
       0% {
-        transform: translateY(0) rotate(0deg);
+        transform:
+          translateY(0)
+          rotate(0);
+
         opacity: 0;
       }
 
@@ -311,19 +485,23 @@
       }
 
       100% {
-        transform: translateY(-110vh) rotate(25deg);
+        transform:
+          translateY(-110vh)
+          rotate(25deg);
+
         opacity: 0;
       }
     }
+
 
     /* =========================
        MOBILE
     ========================= */
 
-    @media (max-width: 480px) {
+    @media(max-width:480px) {
 
       .opening h1 {
-        font-size: 29px;
+        font-size: 28px;
       }
 
       .gift {
@@ -332,7 +510,6 @@
 
       .card {
         padding: 30px 20px;
-        border-radius: 25px;
       }
 
       .photo-wrapper {
@@ -350,134 +527,232 @@
 
       .message {
         font-size: 15px;
-        line-height: 1.8;
       }
     }
+
   </style>
 </head>
 
+
 <body>
+
+
+  <!-- =========================
+       MUSIC BUTTON
+  ========================== -->
+
+  <div class="music-top">
+
+    <button
+      onclick="toggleMusic()"
+      id="musicButton">
+
+      🔇
+
+    </button>
+
+  </div>
+
+
+  <!-- AUDIO -->
+
+  <audio
+    id="audio"
+    loop>
+
+    <source
+      src="lagu.mp3"
+      type="audio/mpeg">
+
+  </audio>
+
+
 
   <div class="container">
 
+
     <!-- =========================
-         OPENING SURPRISE
+         OPENING
     ========================== -->
 
-    <div class="opening" id="opening">
+    <div
+      class="opening"
+      id="opening">
 
       <div class="small-text">
+
         A little something for you...
+
       </div>
 
-      <h1>Hey, Birthday Boy 🤍</h1>
+
+      <h1>
+
+        Hey, Birthday Boy 🤍
+
+      </h1>
+
 
       <p>
-        Ada sesuatu yang ingin aku kasih untuk kamu.
-        Bukan hadiah yang besar, tapi dibuat dengan penuh rasa.
+
+        Ada sesuatu yang ingin aku kasih
+        untuk kamu.
+
+        <br>
+
+        Bukan hadiah yang besar,
+        tapi dibuat dengan penuh rasa.
+
       </p>
 
+
       <div class="gift">
+
         🎁
+
       </div>
 
-      <button class="open-btn" onclick="openWish()">
+
+      <button
+        class="open-btn"
+        onclick="openWish()">
+
         Buka untuk kamu 🤍
+
       </button>
 
     </div>
+
 
 
     <!-- =========================
          BIRTHDAY CARD
     ========================== -->
 
-    <div class="card" id="card">
+    <div
+      class="card"
+      id="card">
 
-      <!-- FOTO -->
-      <div class="photo-wrapper" id="photo">
-        <img src="foto.jpg" alt="Our Photo">
+
+      <!-- PHOTO -->
+
+      <div
+        class="photo-wrapper"
+        id="photo">
+
+        <img
+          src="foto.jpg"
+          alt="Our Photo">
+
       </div>
 
 
       <!-- TITLE -->
-      <h1 class="wish-title" id="title">
+
+      <h1
+        class="wish-title"
+        id="title">
+
         Happy Birthday, my love 🤍
+
       </h1>
 
 
       <!-- SUBTITLE -->
-      <div class="subtitle" id="subtitle">
+
+      <div
+        class="subtitle"
+        id="subtitle">
+
         Another year, another blessing ✨
+
       </div>
 
 
       <!-- MESSAGE -->
-      <div class="message" id="message">
+
+      <div
+        class="message"
+        id="message">
+
 
         <p>
-          Semoga di usia yang baru ini, kamu selalu diberikan
-          kesehatan, kebahagiaan, dan dimudahkan dalam setiap langkah.
+
+          Semoga di usia yang baru ini,
+          kamu selalu diberikan kesehatan,
+          kebahagiaan, dan dimudahkan
+          dalam setiap langkah.
+
         </p>
 
-        <p>
-          Terimakasih sudah hadir di dunia ini dan kita
-          dipertemukan oleh Allah SWT.
-          Terima kasih sudah menjadi seseorang yang begitu berarti.
-        </p>
 
         <p>
-          Aku sayang sama kamu dan aku selalu ada di samping kamu,
-          walaupun aku banyak ngambeknya sama kamu 🫶🏻
+
+          Terimakasih sudah hadir di dunia ini
+          dan kita dipertemukan oleh Allah SWT.
+
+          Terima kasih sudah menjadi seseorang
+          yang begitu berarti.
+
         </p>
 
+
         <p>
-          Semoga kita diizinkan untuk selalu bersama-sama melewati
-          semua perjalanan hidup yang indah ini, saling menggenggam
+
+          Aku sayang sama kamu dan aku selalu
+          ada di samping kamu, walaupun aku
+          banyak ngambeknya sama kamu 🫶🏻
+
+        </p>
+
+
+        <p>
+
+          Semoga kita diizinkan untuk selalu
+          bersama-sama melewati semua perjalanan
+          hidup yang indah ini, saling menggenggam
           tangan, berdampingan ya sayang.
+
         </p>
 
       </div>
 
 
       <!-- QUOTE -->
-      <div class="quote" id="quote">
 
-        <p>
-          “Sampai kita tua, sampai jadi debu,
-          ku di liang yang satu, ku di sebelahmu.” 👩‍❤️‍👨
-        </p>
+      <div
+        class="quote"
+        id="quote">
+
+        “Sampai kita tua,
+        sampai jadi debu,
+        ku di liang yang satu,
+        ku di sebelahmu.” 👩‍❤️‍👨
 
       </div>
 
 
-      <!-- FINAL MESSAGE -->
-      <div class="message" id="finalMessage">
+      <!-- FINAL -->
+
+      <div
+        class="message final-message"
+        id="finalMessage">
 
         <p>
-          I hope this new chapter brings you more happiness,
-          more beautiful memories, and everything your heart
-          has been wishing for. ✨
+
+          I hope this new chapter brings you
+          more happiness, more beautiful memories,
+          and everything your heart has been
+          wishing for. ✨
+
         </p>
+
 
         <p class="center">
+
           Happy birthday, my Love 🤍
+
         </p>
-
-      </div>
-
-
-      <!-- MUSIC -->
-      <div class="music" id="music">
-
-        <button onclick="toggleMusic()" id="musicButton">
-          ▶ Play Music 🎵
-        </button>
-
-        <audio id="audio">
-          <source src="lagu.mp3" type="audio/mpeg">
-          Browser kamu tidak mendukung audio.
-        </audio>
 
       </div>
 
@@ -486,78 +761,46 @@
   </div>
 
 
+
   <script>
-
-    /* =========================
-       OPEN BIRTHDAY WISH
-    ========================== */
-
-    function openWish() {
-
-      const opening = document.getElementById("opening");
-      const card = document.getElementById("card");
-
-      opening.classList.add("hide");
-
-      setTimeout(() => {
-
-        card.classList.add("show");
-
-        // FOTO
-        setTimeout(() => {
-          document.getElementById("photo")
-            .classList.add("show");
-        }, 500);
-
-        // TITLE
-        setTimeout(() => {
-          document.getElementById("title")
-            .classList.add("show");
-        }, 1400);
-
-        // SUBTITLE
-        setTimeout(() => {
-          document.getElementById("subtitle")
-            .classList.add("show");
-        }, 2100);
-
-        // MESSAGE
-        setTimeout(() => {
-          document.getElementById("message")
-            .classList.add("show");
-        }, 3000);
-
-        // QUOTE
-        setTimeout(() => {
-          document.getElementById("quote")
-            .classList.add("show");
-        }, 6500);
-
-        // FINAL MESSAGE
-        setTimeout(() => {
-          document.getElementById("finalMessage")
-            .classList.add("show");
-        }, 8200);
-
-        // MUSIC BUTTON
-        setTimeout(() => {
-          document.getElementById("music")
-            .classList.add("show");
-        }, 9700);
-
-        // Start hearts
-        startHearts();
-
-      }, 700);
-    }
 
 
     /* =========================
        MUSIC
     ========================== */
 
-    const audio = document.getElementById("audio");
-    const musicButton = document.getElementById("musicButton");
+    const audio =
+      document.getElementById("audio");
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+
+    let musicPlaying = false;
+
+
+    function playMusic() {
+
+      audio.play()
+        .then(() => {
+
+          musicPlaying = true;
+
+          musicButton.innerHTML = "🎵";
+
+        })
+        .catch(() => {
+
+          /*
+          Browser memblokir autoplay.
+          Musik akan mulai setelah
+          tombol opening ditekan.
+          */
+
+        });
+
+    }
+
 
     function toggleMusic() {
 
@@ -565,58 +808,216 @@
 
         audio.play();
 
-        musicButton.innerHTML =
-          "⏸ Pause Music 🎵";
+        musicButton.innerHTML = "🎵";
 
-      } else {
+      }
+
+      else {
 
         audio.pause();
 
-        musicButton.innerHTML =
-          "▶ Play Music 🎵";
+        musicButton.innerHTML = "🔇";
+
       }
+
     }
 
 
     /* =========================
-       FLOATING HEARTS
+       TRY AUTOPLAY
+    ========================== */
+
+    window.addEventListener(
+      "load",
+      function() {
+
+        playMusic();
+
+      }
+    );
+
+
+
+    /* =========================
+       OPEN WISH
+    ========================== */
+
+    function openWish() {
+
+
+      /*
+      Karena tombol ini merupakan
+      interaksi user, browser biasanya
+      mengizinkan musik mulai.
+      */
+
+      audio.play()
+        .then(() => {
+
+          musicButton.innerHTML = "🎵";
+
+        })
+        .catch(() => {});
+
+
+      const opening =
+        document.getElementById("opening");
+
+      const card =
+        document.getElementById("card");
+
+
+      opening.classList.add("hide");
+
+
+      setTimeout(() => {
+
+
+        card.classList.add("show");
+
+
+        /* FOTO */
+
+        setTimeout(() => {
+
+          document
+            .getElementById("photo")
+            .classList.add("show");
+
+        }, 500);
+
+
+        /* TITLE */
+
+        setTimeout(() => {
+
+          document
+            .getElementById("title")
+            .classList.add("show");
+
+        }, 1400);
+
+
+        /* SUBTITLE */
+
+        setTimeout(() => {
+
+          document
+            .getElementById("subtitle")
+            .classList.add("show");
+
+        }, 2100);
+
+
+        /* MESSAGE */
+
+        setTimeout(() => {
+
+          document
+            .getElementById("message")
+            .classList.add("show");
+
+        }, 3000);
+
+
+        /* QUOTE */
+
+        setTimeout(() => {
+
+          document
+            .getElementById("quote")
+            .classList.add("show");
+
+        }, 6500);
+
+
+        /* FINAL */
+
+        setTimeout(() => {
+
+          document
+            .getElementById("finalMessage")
+            .classList.add("show");
+
+        }, 8200);
+
+
+        startHearts();
+
+
+      }, 700);
+
+    }
+
+
+
+    /* =========================
+       HEARTS
     ========================== */
 
     function createHeart() {
 
-      const heart = document.createElement("div");
 
-      heart.className = "heart";
+      const heart =
+        document.createElement("div");
 
-      const hearts = ["🤍", "💕", "💗", "💖", "✨"];
+
+      heart.className =
+        "heart";
+
+
+      const hearts = [
+        "🤍",
+        "💕",
+        "💗",
+        "💖",
+        "✨"
+      ];
+
 
       heart.innerHTML =
-        hearts[Math.floor(Math.random() * hearts.length)];
+        hearts[
+          Math.floor(
+            Math.random() *
+            hearts.length
+          )
+        ];
+
 
       heart.style.left =
         Math.random() * 100 + "vw";
 
+
       heart.style.animationDuration =
         (5 + Math.random() * 5) + "s";
+
 
       heart.style.fontSize =
         (14 + Math.random() * 14) + "px";
 
+
       document.body.appendChild(heart);
 
+
       setTimeout(() => {
+
         heart.remove();
+
       }, 10000);
+
     }
 
 
     function startHearts() {
 
       setInterval(() => {
+
         createHeart();
+
       }, 700);
 
     }
+
 
   </script>
 
