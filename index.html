@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Wish 🎂</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #fff1f7);
+      color: #444;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 35px 25px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #e75480;
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 15px 0;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #e75480;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #d94370;
+    }
+
+    #result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #fff0f5;
+      border-radius: 15px;
+    }
+
+    .heart {
+      font-size: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="heart">💗</div>
+
+    <h1>Birthday Wish 🎂</h1>
+
+    <p>Masukkan nama untuk membuka ucapan spesial ✨</p>
+
+    <input
+      type="text"
+      id="name"
+      placeholder="Nama kamu..."
+    >
+
+    <button onclick="createWish()">
+      Create Birthday Wish 💌
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+
+  <script>
+    function createWish() {
+      const name = document.getElementById("name").value.trim();
+      const result = document.getElementById("result");
+
+      if (name === "") {
+        alert("Masukkan nama terlebih dahulu ya 💗");
+        return;
+      }
+
+      result.style.display = "block";
+
+      result.innerHTML = `
+        <h2>Happy Birthday, ${name}! 🎂</h2>
+        <p>
+          Another blessing, another year to grow,
+          another chance to shine. ✨
+        </p>
+
+        <p>
+          Semoga tahun ini membawa lebih banyak
+          kebahagiaan, kesehatan, rezeki, dan
+          hal-hal baik yang kamu harapkan. 🤍
+        </p>
+
+        <p>
+          Keep growing, keep shining, and keep being you. 🌷
+        </p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
