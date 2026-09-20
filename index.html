@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Happy Birthday, My Love 🤍</title>
+  <title>For My Love 🤍</title>
 
   <style>
     * {
@@ -15,78 +14,129 @@
 
     body {
       min-height: 100vh;
-      font-family: "Arial", sans-serif;
+      font-family: "Georgia", serif;
       background:
-        radial-gradient(circle at top left, #ffe1eb 0%, transparent 35%),
-        radial-gradient(circle at bottom right, #eadcff 0%, transparent 35%),
-        linear-gradient(135deg, #fff8fa, #fdf4f8, #f8f3ff);
-      color: #555;
+        radial-gradient(circle at top, #ffeaf2 0%, transparent 40%),
+        linear-gradient(135deg, #fff5f7, #fce4ec, #f8dce8);
+      color: #5c3a46;
       overflow-x: hidden;
     }
 
-    .page {
+    .container {
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px 15px;
+      padding: 25px 15px;
+      position: relative;
     }
+
+    /* =========================
+       OPENING
+    ========================= */
+
+    .opening {
+      text-align: center;
+      transition: all 1s ease;
+      z-index: 5;
+    }
+
+    .opening.hide {
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .small-text {
+      font-size: 15px;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      color: #9b687b;
+    }
+
+    .opening h1 {
+      font-size: 35px;
+      color: #7c455b;
+      margin-bottom: 12px;
+    }
+
+    .opening p {
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 330px;
+      margin: auto;
+      color: #765260;
+    }
+
+    .gift {
+      font-size: 65px;
+      margin: 25px 0;
+      animation: floating 2.5s ease-in-out infinite;
+    }
+
+    .open-btn {
+      border: none;
+      background: linear-gradient(135deg, #b76e8a, #8f4f6c);
+      color: white;
+      padding: 15px 32px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(143, 79, 108, 0.3);
+      transition: 0.3s;
+    }
+
+    .open-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    /* =========================
+       MAIN CARD
+    ========================= */
 
     .card {
       width: 100%;
-      max-width: 450px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.8);
-      border-radius: 32px;
-      padding: 30px 22px;
+      max-width: 650px;
+      padding: 35px 25px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 60px rgba(120, 60, 90, 0.18);
       text-align: center;
-      box-shadow:
-        0 20px 60px rgba(170, 110, 140, 0.18);
-      animation: cardAppear 1.2s ease;
-      position: relative;
-      z-index: 2;
+
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      pointer-events: none;
+      transition: all 1.2s ease;
     }
 
-    .top-text {
-      font-size: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #c68ba3;
-      margin-bottom: 10px;
+    .card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
     }
 
-    h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 37px;
-      color: #b96d89;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
+    /* =========================
+       PHOTO
+    ========================= */
 
-    .subtitle {
-      font-size: 14px;
-      color: #999;
-      margin-bottom: 25px;
-    }
-
-    /* FOTO */
     .photo-wrapper {
-      width: 215px;
-      height: 215px;
+      width: 170px;
+      height: 170px;
       margin: 0 auto 25px;
-      padding: 7px;
       border-radius: 50%;
-      background: linear-gradient(
-        135deg,
-        #d995ae,
-        #f4c7d7,
-        #e6d2ef
-      );
-      box-shadow:
-        0 12px 35px rgba(180, 110, 140, 0.25);
-      animation: photoFloat 4s ease-in-out infinite;
+      padding: 5px;
+      background: linear-gradient(135deg, #d69aaa, #f3c8d5, #b76e8a);
+      box-shadow: 0 10px 30px rgba(140, 70, 100, 0.25);
+
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    .photo-wrapper.show {
+      animation: photoAppear 1.2s forwards;
     }
 
     .photo-wrapper img {
@@ -94,165 +144,213 @@
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      border: 5px solid white;
-      display: block;
+      border: 4px solid white;
     }
 
-    /* PEMBUKA */
-    .opening {
-      font-family: Georgia, serif;
-      color: #a86c83;
-      font-size: 17px;
-      margin-bottom: 18px;
+    /* =========================
+       TEXT
+    ========================= */
+
+    .wish-title,
+    .subtitle,
+    .message,
+    .quote,
+    .music {
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    /* UCAPAN */
+    .wish-title.show {
+      animation: textAppear 1s forwards;
+    }
+
+    .wish-title {
+      font-size: 30px;
+      color: #7c455b;
+      margin-bottom: 10px;
+    }
+
+    .subtitle.show {
+      animation: textAppear 1s forwards;
+      animation-delay: 0.2s;
+      animation-fill-mode: both;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #a65d79;
+      font-style: italic;
+      margin-bottom: 25px;
+    }
+
     .message {
-      background: rgba(255,255,255,0.9);
-      border-radius: 24px;
-      padding: 23px 20px;
       text-align: left;
-      line-height: 1.8;
-      font-size: 14.5px;
-      color: #666;
-      box-shadow: 0 8px 25px rgba(180, 120, 150, 0.08);
+      font-size: 16px;
+      line-height: 1.9;
+      color: #644653;
+    }
+
+    .message.show {
+      animation: textAppear 1s forwards;
     }
 
     .message p {
       margin-bottom: 18px;
     }
 
-    .message p:last-child {
-      margin-bottom: 0;
+    .message .center {
       text-align: center;
     }
 
-    .message strong {
-      color: #b76888;
-      font-family: Georgia, serif;
-      font-size: 17px;
+    .quote.show {
+      animation: textAppear 1s forwards;
     }
 
-    .message em {
-      color: #ad7088;
-    }
-
-    /* QUOTE */
-    .quote-box {
-      margin: 23px 3px 0;
-      padding: 18px;
-      border-radius: 20px;
-      background: linear-gradient(
-        135deg,
-        rgba(255,232,239,0.8),
-        rgba(246,235,255,0.8)
-      );
-      color: #a56f83;
-      font-family: Georgia, serif;
+    .quote {
+      margin: 25px 0;
+      padding: 20px;
+      border-left: 4px solid #b76e8a;
+      background: rgba(255, 235, 242, 0.75);
+      border-radius: 0 15px 15px 0;
       font-style: italic;
-      line-height: 1.7;
-      font-size: 14px;
+      line-height: 1.8;
+      color: #75495a;
     }
 
-    .quote-box .heart-line {
-      font-style: normal;
-      font-size: 18px;
-      margin-top: 7px;
+    /* =========================
+       MUSIC
+    ========================= */
+
+    .music.show {
+      animation: textAppear 1s forwards;
     }
 
-    /* MUSIK */
-    .music-area {
+    .music {
       margin-top: 25px;
     }
 
-    .music-button {
+    .music button {
       border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 13px 25px;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #c77f9b, #b96d89);
+      background: #8f4f6c;
       color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-family: inherit;
       font-size: 14px;
-      box-shadow: 0 8px 20px rgba(185, 109, 137, 0.25);
-      transition: 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(143, 79, 108, 0.25);
     }
 
-    .music-button:hover {
-      transform: translateY(-2px) scale(1.03);
+    .music button:hover {
+      transform: scale(1.03);
     }
 
-    .music-note {
-      margin-top: 9px;
-      font-size: 11px;
-      color: #aaa;
-    }
+    /* =========================
+       HEARTS
+    ========================= */
 
-    .footer {
-      margin-top: 25px;
-      font-size: 11px;
-      color: #b6a6ad;
-      letter-spacing: 0.5px;
-    }
-
-    /* HATI MELAYANG */
-    .floating-heart {
+    .heart {
       position: fixed;
       bottom: -30px;
+      font-size: 18px;
+      animation: heartFloat linear forwards;
       pointer-events: none;
       z-index: 1;
-      opacity: 0;
-      animation: floatHeart linear forwards;
     }
 
-    @keyframes cardAppear {
-      from {
-        opacity: 0;
-        transform: translateY(35px) scale(0.96);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
+    /* =========================
+       ANIMATIONS
+    ========================= */
 
-    @keyframes photoFloat {
+    @keyframes floating {
       0%, 100% {
         transform: translateY(0);
       }
+
       50% {
-        transform: translateY(-6px);
+        transform: translateY(-12px);
       }
     }
 
-    @keyframes floatHeart {
+    @keyframes photoAppear {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+      }
+
+      70% {
+        transform: scale(1.08) rotate(3deg);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    @keyframes textAppear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heartFloat {
       0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
       }
 
       15% {
-        opacity: 0.7;
+        opacity: 1;
       }
 
       100% {
-        transform: translateY(-110vh) rotate(360deg);
+        transform: translateY(-110vh) rotate(25deg);
         opacity: 0;
       }
     }
 
-    @media (max-width: 380px) {
-      h1 {
-        font-size: 31px;
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
+
+      .opening h1 {
+        font-size: 29px;
+      }
+
+      .gift {
+        font-size: 58px;
+      }
+
+      .card {
+        padding: 30px 20px;
+        border-radius: 25px;
       }
 
       .photo-wrapper {
-        width: 185px;
-        height: 185px;
+        width: 145px;
+        height: 145px;
+      }
+
+      .wish-title {
+        font-size: 27px;
+      }
+
+      .subtitle {
+        font-size: 16px;
       }
 
       .message {
-        font-size: 14px;
+        font-size: 15px;
+        line-height: 1.8;
       }
     }
   </style>
@@ -260,74 +358,101 @@
 
 <body>
 
-  <div class="page">
+  <div class="container">
 
-    <div class="card">
+    <!-- =========================
+         OPENING SURPRISE
+    ========================== -->
 
-      <div class="top-text">
-        A Little Birthday Wish
+    <div class="opening" id="opening">
+
+      <div class="small-text">
+        A little something for you...
       </div>
 
-      <h1>
-        Happy Birthday,<br>
-        My Love 🤍
+      <h1>Hey, Birthday Boy 🤍</h1>
+
+      <p>
+        Ada sesuatu yang ingin aku kasih untuk kamu.
+        Bukan hadiah yang besar, tapi dibuat dengan penuh rasa.
+      </p>
+
+      <div class="gift">
+        🎁
+      </div>
+
+      <button class="open-btn" onclick="openWish()">
+        Buka untuk kamu 🤍
+      </button>
+
+    </div>
+
+
+    <!-- =========================
+         BIRTHDAY CARD
+    ========================== -->
+
+    <div class="card" id="card">
+
+      <!-- FOTO -->
+      <div class="photo-wrapper" id="photo">
+        <img src="foto.jpg" alt="Our Photo">
+      </div>
+
+
+      <!-- TITLE -->
+      <h1 class="wish-title" id="title">
+        Happy Birthday, my love 🤍
       </h1>
 
-      <div class="subtitle">
+
+      <!-- SUBTITLE -->
+      <div class="subtitle" id="subtitle">
         Another year, another blessing ✨
       </div>
 
 
-      <!-- FOTO -->
-      <div class="photo-wrapper">
-        <img
-          src="foto.jpg"
-          alt="Our special memory"
-        >
-      </div>
-
-
-      <div class="opening">
-        For the person who means so much to me... 🤍
-      </div>
-
-
-      <!-- UCAPAN -->
-      <div class="message">
+      <!-- MESSAGE -->
+      <div class="message" id="message">
 
         <p>
-          <strong>Happy Birthday, my love 🤍</strong>
-        </p>
-
-        <p>
-          Another year, another blessing.
           Semoga di usia yang baru ini, kamu selalu diberikan
           kesehatan, kebahagiaan, dan dimudahkan dalam setiap langkah.
         </p>
 
         <p>
-          Terima kasih sudah hadir di dunia ini dan akhirnya kita
+          Terimakasih sudah hadir di dunia ini dan kita
           dipertemukan oleh Allah SWT.
           Terima kasih sudah menjadi seseorang yang begitu berarti.
-          Aku sayang sama kamu, dan aku akan selalu ada di samping kamu,
+        </p>
+
+        <p>
+          Aku sayang sama kamu dan aku selalu ada di samping kamu,
           walaupun aku banyak ngambeknya sama kamu 🫶🏻
         </p>
 
         <p>
           Semoga kita diizinkan untuk selalu bersama-sama melewati
-          semua perjalanan hidup yang indah ini.
-          Saling menggenggam tangan, berdampingan, dan terus berjalan
-          bersama ya, sayang. 👩‍❤️‍👨
+          semua perjalanan hidup yang indah ini, saling menggenggam
+          tangan, berdampingan ya sayang.
         </p>
 
+      </div>
+
+
+      <!-- QUOTE -->
+      <div class="quote" id="quote">
+
         <p>
-          Seperti lagu yang menggambarkan harapanku untuk kita:
-          <em>
-            “Sampai kita tua, sampai jadi debu,
-            ku di liang yang satu, ku di sebelahmu.”
-          </em>
-          🤍
+          “Sampai kita tua, sampai jadi debu,
+          ku di liang yang satu, ku di sebelahmu.” 👩‍❤️‍👨
         </p>
+
+      </div>
+
+
+      <!-- FINAL MESSAGE -->
+      <div class="message" id="finalMessage">
 
         <p>
           I hope this new chapter brings you more happiness,
@@ -335,57 +460,25 @@
           has been wishing for. ✨
         </p>
 
-        <p>
-          <strong>
-            Happy birthday, my Love 🤍
-          </strong>
+        <p class="center">
+          Happy birthday, my Love 🤍
         </p>
 
       </div>
 
 
-      <!-- QUOTE -->
-      <div class="quote-box">
-        For all the days ahead,
-        I hope it's always you and me.
+      <!-- MUSIC -->
+      <div class="music" id="music">
 
-        <br>
-
-        <span>
-          Growing together, laughing together,
-          and growing old together. 🤍
-        </span>
-
-        <div class="heart-line">
-          ♡ ✦ ♡
-        </div>
-      </div>
-
-
-      <!-- MUSIK -->
-      <div class="music-area">
-
-        <audio id="birthdayMusic" loop>
-          <source src="lagu.mp3" type="audio/mpeg">
-        </audio>
-
-        <button
-          class="music-button"
-          id="musicButton"
-          onclick="toggleMusic()"
-        >
-          🎵 Play Our Song
+        <button onclick="toggleMusic()" id="musicButton">
+          ▶ Play Music 🎵
         </button>
 
-        <div class="music-note">
-          Tap the button and let the memories play 🎶
-        </div>
+        <audio id="audio">
+          <source src="lagu.mp3" type="audio/mpeg">
+          Browser kamu tidak mendukung audio.
+        </audio>
 
-      </div>
-
-
-      <div class="footer">
-        Made with love, just for you 🤍
       </div>
 
     </div>
@@ -396,74 +489,136 @@
   <script>
 
     /* =========================
-       MUSIC
-    ========================= */
+       OPEN BIRTHDAY WISH
+    ========================== */
 
-    const music = document.getElementById("birthdayMusic");
+    function openWish() {
+
+      const opening = document.getElementById("opening");
+      const card = document.getElementById("card");
+
+      opening.classList.add("hide");
+
+      setTimeout(() => {
+
+        card.classList.add("show");
+
+        // FOTO
+        setTimeout(() => {
+          document.getElementById("photo")
+            .classList.add("show");
+        }, 500);
+
+        // TITLE
+        setTimeout(() => {
+          document.getElementById("title")
+            .classList.add("show");
+        }, 1400);
+
+        // SUBTITLE
+        setTimeout(() => {
+          document.getElementById("subtitle")
+            .classList.add("show");
+        }, 2100);
+
+        // MESSAGE
+        setTimeout(() => {
+          document.getElementById("message")
+            .classList.add("show");
+        }, 3000);
+
+        // QUOTE
+        setTimeout(() => {
+          document.getElementById("quote")
+            .classList.add("show");
+        }, 6500);
+
+        // FINAL MESSAGE
+        setTimeout(() => {
+          document.getElementById("finalMessage")
+            .classList.add("show");
+        }, 8200);
+
+        // MUSIC BUTTON
+        setTimeout(() => {
+          document.getElementById("music")
+            .classList.add("show");
+        }, 9700);
+
+        // Start hearts
+        startHearts();
+
+      }, 700);
+    }
+
+
+    /* =========================
+       MUSIC
+    ========================== */
+
+    const audio = document.getElementById("audio");
     const musicButton = document.getElementById("musicButton");
 
     function toggleMusic() {
 
-      if (music.paused) {
+      if (audio.paused) {
 
-        music.play();
+        audio.play();
 
         musicButton.innerHTML =
-          "⏸ Pause Our Song";
+          "⏸ Pause Music 🎵";
 
       } else {
 
-        music.pause();
+        audio.pause();
 
         musicButton.innerHTML =
-          "🎵 Play Our Song";
+          "▶ Play Music 🎵";
       }
     }
 
 
     /* =========================
        FLOATING HEARTS
-    ========================= */
+    ========================== */
 
     function createHeart() {
 
       const heart = document.createElement("div");
 
-      heart.className = "floating-heart";
+      heart.className = "heart";
 
-      const symbols = [
-        "♡",
-        "♥",
-        "🤍",
-        "✦",
-        "♡"
-      ];
+      const hearts = ["🤍", "💕", "💗", "💖", "✨"];
 
       heart.innerHTML =
-        symbols[Math.floor(Math.random() * symbols.length)];
+        hearts[Math.floor(Math.random() * hearts.length)];
 
       heart.style.left =
         Math.random() * 100 + "vw";
 
-      heart.style.fontSize =
-        (12 + Math.random() * 14) + "px";
-
-      const duration =
-        5 + Math.random() * 5;
-
       heart.style.animationDuration =
-        duration + "s";
+        (5 + Math.random() * 5) + "s";
+
+      heart.style.fontSize =
+        (14 + Math.random() * 14) + "px";
 
       document.body.appendChild(heart);
 
       setTimeout(() => {
         heart.remove();
-      }, duration * 1000);
+      }, 10000);
     }
 
-    setInterval(createHeart, 900);
+
+    function startHearts() {
+
+      setInterval(() => {
+        createHeart();
+      }, 700);
+
+    }
 
   </script>
 
 </body>
-          </html>
+  </html>
